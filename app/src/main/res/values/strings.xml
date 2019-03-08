@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Rasa_Motors</string>
+    <string name="vehiclePage">Vehicles</string>
+    <string name="noVehicles">No Vecicles Added</string>
+    <string name="addVehicle">Add Vehicle</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="addNewVehicle">Add New Vehicle</string>
+    <string name="vModel">Model :</string>
+    <string name="vType">Type :</string>
+    <string name="vNo">Vehicle Number :</string>
+    <string name="vcolor">Color :</string>
+    <string name="model">Enter model name</string>
+    <string name="type">Enter vehicle type</string>
+    <string name="vehicleNumber">Enter vehicle number</string>
+    <string name="vehicleColor">Enter vehicle color</string>
+    <string name="modelNull">Please Enter a Model Name!</string>
+    <string name="typeNull">Please Enter The Type!</string>
+    <string name="numberNull">Please Enter Vehicle Number!</string>
+    <string name="colorNull">Please Enter The Color!</string>
+    <string name="vehSuccess">Vehicle Added Successfully!</string>
+
 </resources>
