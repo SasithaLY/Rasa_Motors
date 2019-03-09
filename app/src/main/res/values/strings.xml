@@ -19,5 +19,9 @@
     <string name="numberNull">Please Enter Vehicle Number!</string>
     <string name="colorNull">Please Enter The Color!</string>
     <string name="vehSuccess">Vehicle Added Successfully!</string>
+    <string name="vehDetails">Vehicle Details</string>
+    <string name="btnBack">Back</string>
+    <string name="updateSuccess">Vehicle Details Updated Successfully!</string>
+    <string name="deleteSuccess">Vehicle Details Deleted Successfully!</string>
 
 </resources>

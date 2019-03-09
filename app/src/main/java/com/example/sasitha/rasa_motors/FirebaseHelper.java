@@ -3,6 +3,7 @@ package com.example.sasitha.rasa_motors;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,6 +54,25 @@ public class FirebaseHelper {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    public void updateVehicle(String key, Vehicle vehicle, final DataStatus dataStatus){
+        dbRef.child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsUpdated();
+            }
+        });
+
+    }
+
+    public void deleteVehicle(String key, final DataStatus dataStatus){
+        dbRef.child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsDeleted();
             }
         });
     }

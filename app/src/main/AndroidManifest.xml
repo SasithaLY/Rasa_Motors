@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sasitha.rasa_motors">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".vehicles"
-            android:parentActivityName=".Login"></activity>
+            android:parentActivityName=".Login" />
         <activity
             android:name=".addVehicle"
             android:parentActivityName=".vehicles">
@@ -28,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Customers"></activity>
+        <activity android:name=".Customers" />
+        <activity android:name=".VehicleDetails"></activity>
     </application>
 
 </manifest>

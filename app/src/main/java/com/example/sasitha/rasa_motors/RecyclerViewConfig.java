@@ -1,6 +1,7 @@
 package com.example.sasitha.rasa_motors;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +45,19 @@ public class RecyclerViewConfig {
             vehNumber = (TextView) itemView.findViewById(R.id.txtViewNumber);
             vehColor = (TextView) itemView.findViewById(R.id.txtViewColor);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(vContext, VehicleDetails.class);
+                    intent.putExtra("key" , key);
+                    intent.putExtra("model", vehModel.getText().toString());
+                    intent.putExtra("type" , vehType.getText().toString());
+                    intent.putExtra("number", vehNumber.getText().toString());
+                    intent.putExtra("color", vehColor.getText().toString());
+
+                    vContext.startActivity(intent);
+                }
+            });
         }
 
         public void bind(Vehicle vehicle,String key){
