@@ -1,5 +1,6 @@
 package com.example.sasitha.rasa_motors;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -65,6 +66,9 @@ public class addVehicle extends AppCompatActivity {
             vehicleDatabase.child(vehicleID).setValue(vehicle);
 
             Toast.makeText(this, this.getResources().getString(R.string.vehSuccess), Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, vehicles.class);
+            startActivity(intent);
         }
     }
 }

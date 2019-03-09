@@ -2,10 +2,10 @@ package com.example.sasitha.rasa_motors;
 
 public class Vehicle {
 
-    private String vehModel;
-    private String vehType;
-    private String vehNumber;
-    private String vehColor;
+    String vehModel;
+    String vehType;
+    String vehNumber;
+    String vehColor;
 
     public Vehicle(){
 
@@ -19,34 +19,31 @@ public class Vehicle {
     }
 
     public String getVehModel() {
-
         return vehModel;
-    }
-
-    public String getVehType() {
-
-        return vehType;
-    }
-
-    public String getVehNumber() {
-
-        return vehNumber;
-    }
-
-    public String getVehColor() {
-        return vehColor;
     }
 
     public void setVehModel(String vehModel) {
         this.vehModel = vehModel;
     }
 
+    public String getVehType() {
+        return vehType;
+    }
+
     public void setVehType(String vehType) {
         this.vehType = vehType;
     }
 
+    public String getVehNumber() {
+        return vehNumber;
+    }
+
     public void setVehNumber(String vehNumber) {
         this.vehNumber = vehNumber;
+    }
+
+    public String getVehColor() {
+        return vehColor;
     }
 
     public void setVehColor(String vehColor) {
