@@ -9,19 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".vehicles">
+        <activity
+            android:name=".vehicles"
+            android:parentActivityName=".Login"></activity>
+        <activity
+            android:name=".addVehicle"
+            android:parentActivityName=".vehicles">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sasitha.rasa_motors.vehicles" />
+        </activity>
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addVehicle"  android:parentActivityName=".vehicles">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sasitha.rasa_motors.vehicles" />
-
-        </activity>
+        <activity android:name=".Customers"></activity>
     </application>
 
 </manifest>
