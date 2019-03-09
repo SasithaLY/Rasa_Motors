@@ -35,6 +35,17 @@ public class FirebaseHelper {
 
     }
 
+    public void addVehicle(Vehicle  vehicle, final DataStatus dataStatus){
+
+        String key = dbRef.push().getKey();
+        dbRef.child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsInserted();
+            }
+        });
+    }
+
     public void readVehicles(final DataStatus dataStatus){
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,6 +87,8 @@ public class FirebaseHelper {
             }
         });
     }
+
+
 }
 
 

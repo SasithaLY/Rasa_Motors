@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rasa_Motors</string>
+    <string name="app_name">Rasa Motors</string>
     <string name="vehiclePage">Vehicles</string>
     <string name="noVehicles">No Vecicles Added</string>
     <string name="addVehicle">Add Vehicle</string>
@@ -23,5 +23,6 @@
     <string name="btnBack">Back</string>
     <string name="updateSuccess">Vehicle Details Updated Successfully!</string>
     <string name="deleteSuccess">Vehicle Details Deleted Successfully!</string>
+    <string name="btnAdd">Add</string>
 
 </resources>

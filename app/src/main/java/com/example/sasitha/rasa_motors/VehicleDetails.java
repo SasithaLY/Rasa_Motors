@@ -3,6 +3,7 @@ package com.example.sasitha.rasa_motors;
 import android.os.Binder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,34 +52,53 @@ public class VehicleDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vehicle vehicle = new Vehicle();
-                vehicle.setVehModel(vehModel.getText().toString());
-                vehicle.setVehType(vehType.getText().toString());
-                vehicle.setVehNumber(vehNumber.getText().toString());
-                vehicle.setVehColor(vehColor.getText().toString());
 
-                new FirebaseHelper().updateVehicle(key, vehicle, new FirebaseHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Vehicle> vehicles, List<String> keys) {
+                String model = vehModel.getText().toString();
+                String type = vehType.getText().toString();
+                String number = vehNumber.getText().toString();
+                String color = vehColor.getText().toString();
 
-                    }
+                if(TextUtils.isEmpty(model)){
+                    Toast.makeText(VehicleDetails.this, getString(R.string.modelNull), Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(type)){
+                    Toast.makeText(VehicleDetails.this, getString(R.string.typeNull), Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(number)){
+                    Toast.makeText(VehicleDetails.this, getString(R.string.numberNull), Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(color)){
+                    Toast.makeText(VehicleDetails.this, getString(R.string.colorNull), Toast.LENGTH_SHORT).show();
+                }else{
+                    vehicle.setVehModel(model);
+                    vehicle.setVehType(type);
+                    vehicle.setVehNumber(number);
+                    vehicle.setVehColor(color);
 
-                    @Override
-                    public void DataIsInserted() {
+                    new FirebaseHelper().updateVehicle(key, vehicle, new FirebaseHelper.DataStatus() {
+                        @Override
+                        public void DataIsLoaded(List<Vehicle> vehicles, List<String> keys) {
 
-                    }
+                        }
 
-                    @Override
-                    public void DataIsUpdated() {
+                        @Override
+                        public void DataIsInserted() {
 
-                        Toast.makeText(VehicleDetails.this, getString(R.string.updateSuccess), Toast.LENGTH_LONG).show();
+                        }
 
-                    }
+                        @Override
+                        public void DataIsUpdated() {
 
-                    @Override
-                    public void DataIsDeleted() {
+                            Toast.makeText(VehicleDetails.this, getString(R.string.updateSuccess), Toast.LENGTH_LONG).show();
+                            finish(); return;
 
-                    }
-                });
+                        }
+
+                        @Override
+                        public void DataIsDeleted() {
+
+                        }
+                    });
+                }
+
+
             }
         });
 
