@@ -24,5 +24,12 @@
     <string name="updateSuccess">Vehicle Details Updated Successfully!</string>
     <string name="deleteSuccess">Vehicle Details Deleted Successfully!</string>
     <string name="btnAdd">Add</string>
+    <string name="cName">Name</string>
+    <string name="cAddress">Address</string>
+    <string name="cPhone">Phone Number</string>
+    <string name="hintName">Enter Your Name</string>
+    <string name="hintAddress">Enter Your Address</string>
+    <string name="hintPhone">Enter Your Phone Number</string>
+    <string name="btnReg">Register</string>
 
 </resources>
