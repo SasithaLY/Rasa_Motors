@@ -3,6 +3,7 @@ package com.example.sasitha.rasa_motors.customers;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class viewCustomer extends AppCompatActivity
             @Override
             public void DataIsLoaded(List<customer> customers, List<String> keys)
             {
+                findViewById(R.id.loadingCustomersPB).setVisibility(View.GONE);
                 new RecyclerViewConfig().setConfiger(mRecyclerView, viewCustomer.this, customers, keys);
             }
 

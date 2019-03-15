@@ -2,6 +2,7 @@ package com.example.sasitha.rasa_motors.customers;
 
 import android.support.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,5 +56,43 @@ public class firebaseDatabaseHelper
             }
         });
     }
+
+    public void addCustomer(customer cust, final DataStatus dataStatus)
+    {
+        String key = mReferenceCustomers.push().getKey();
+        mReferenceCustomers.child(key).setValue(cust).addOnSuccessListener(new OnSuccessListener<Void>()
+        {
+            @Override
+            public void onSuccess(Void aVoid)
+            {
+                dataStatus.DataIsInserted();
+            }
+        });
+    }
+
+    public void updateCustomer(String key, customer cust, final DataStatus dataStatus)
+    {
+        mReferenceCustomers.child(key).setValue(cust).addOnSuccessListener(new OnSuccessListener<Void>()
+        {
+            @Override
+            public void onSuccess(Void aVoid)
+            {
+                dataStatus.DataIsUpdated();
+            }
+        });
+    }
+
+    public void deleteCustomer(String key, final DataStatus dataStatus)
+    {
+        mReferenceCustomers.child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>()
+        {
+            @Override
+            public void onSuccess(Void aVoid)
+            {
+                dataStatus.DataIsDeleted();
+            }
+        });
+    }
+
 
 }

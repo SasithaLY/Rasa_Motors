@@ -5,27 +5,30 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customers.viewCustomer"
-            android:parentActivityName=".Login">
-
-        </activity>
         <activity
-            android:name=".vehicles"
-            android:parentActivityName=".Login" />
+            android:name=".customers.viewCustomer"
+            android:parentActivityName=".pkg_vehicles.HomePage" />
         <activity
-            android:name=".addVehicle"
-            android:parentActivityName=".vehicles">
+            android:name=".pkg_vehicles.vehicles"
+            android:parentActivityName=".pkg_vehicles.HomePage" />
+        <activity
+            android:name=".pkg_vehicles.addVehicle"
+            android:parentActivityName=".pkg_vehicles.vehicles">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sasitha.rasa_motors.vehicles" />
+                android:value="com.example.sasitha.rasa_motors.pkg_vehicles.vehicles" />
         </activity>
+        <activity android:name=".pkg_vehicles.HomePage"></activity>
+        <activity
+            android:name=".customers.Customers"
+            android:parentActivityName=".customers.viewCustomer" />
+        <activity android:name=".pkg_vehicles.VehicleDetails" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,9 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Customers"
-            android:parentActivityName=".customers.viewCustomer"/>
-        <activity android:name=".VehicleDetails"></activity>
+        <activity android:name=".customers.CustomerDetailsActivity"></activity>
     </application>
 
 </manifest>

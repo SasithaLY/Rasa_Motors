@@ -1,4 +1,4 @@
-package com.example.sasitha.rasa_motors;
+package com.example.sasitha.rasa_motors.pkg_vehicles;
 
 public class Vehicle {
 

@@ -6,42 +6,50 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.sasitha.rasa_motors.customers.Customers;
 import com.example.sasitha.rasa_motors.customers.viewCustomer;
+import com.example.sasitha.rasa_motors.pkg_vehicles.HomePage;
+import com.example.sasitha.rasa_motors.pkg_vehicles.vehicles;
 
 public class Login extends AppCompatActivity {
 
-    Button btnVehicle, btnCustomers;
+    Button mSignUp;
+    Button mSignIn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnVehicle = (Button) findViewById(R.id.btnVehicles);
-        btnCustomers = (Button) findViewById(R.id.btnCustomers);
+        mSignUp = (Button) findViewById(R.id.btnSignUp);
+        mSignIn = (Button) findViewById(R.id.btnSignIn) ;
 
-        btnVehicle.setOnClickListener(new View.OnClickListener() {
+        mSignUp.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                openAddVehicle();
+            public void onClick(View v)
+            {
+               openCustomer();
             }
         });
 
-        btnCustomers.setOnClickListener(new View.OnClickListener() {
+        mSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openCustomers();
+            public void onClick(View v)
+            {
+                openHome();
             }
         });
     }
 
-    public void openAddVehicle(){
-        Intent intent = new Intent(this, vehicles.class);
+    public void openCustomer(){
+        Intent intent = new Intent(this, Customers.class);
         startActivity(intent);
     }
 
-    public void openCustomers(){
-        Intent intent = new Intent(this, viewCustomer.class);
+    public void openHome(){
+        Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 }

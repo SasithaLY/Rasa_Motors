@@ -1,6 +1,5 @@
-package com.example.sasitha.rasa_motors;
+package com.example.sasitha.rasa_motors.pkg_vehicles;
 
-import android.os.Binder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.sasitha.rasa_motors.R;
 
 import java.util.List;
 

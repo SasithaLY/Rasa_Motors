@@ -1,10 +1,12 @@
 package com.example.sasitha.rasa_motors.customers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -40,6 +42,21 @@ public class RecyclerViewConfig
             mName = (TextView) itemView.findViewById(R.id.nameTxtView);
             mAddress = (TextView) itemView.findViewById(R.id.addressTxtView);
             mPhone = (TextView) itemView.findViewById(R.id.phoneTxtView);
+
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent(mContext, CustomerDetailsActivity.class);
+                    intent.putExtra("key", key);
+                    intent.putExtra("Name", mName.getText().toString());
+                    intent.putExtra("Address", mAddress.getText().toString());
+                    intent.putExtra("Phone", mPhone.getText().toString());
+
+                    mContext.startActivity(intent);
+                }
+            });
         }
 
         public void bind(customer cust, String key)
