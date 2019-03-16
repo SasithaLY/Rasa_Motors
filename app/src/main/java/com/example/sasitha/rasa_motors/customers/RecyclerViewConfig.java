@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sasitha.rasa_motors.Login;
 import com.example.sasitha.rasa_motors.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -19,8 +22,14 @@ public class RecyclerViewConfig
     private Context mContext;
     private CustomersAdapter mCustomersAdapter;
 
+    FirebaseAuth auth;
+    private static FirebaseUser user;
+
     public void setConfiger(RecyclerView recyclerView, Context context, List<customer> customers, List<String> keys)
     {
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
         mContext = context;
         mCustomersAdapter = new CustomersAdapter(customers, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -48,13 +57,17 @@ public class RecyclerViewConfig
                 @Override
                 public void onClick(View v)
                 {
-                    Intent intent = new Intent(mContext, CustomerDetailsActivity.class);
-                    intent.putExtra("key", key);
-                    intent.putExtra("Name", mName.getText().toString());
-                    intent.putExtra("Address", mAddress.getText().toString());
-                    intent.putExtra("Phone", mPhone.getText().toString());
+                  if (user != null){
+                      Intent intent = new Intent(mContext, CustomerDetailsActivity.class);
+                      intent.putExtra("key", key);
+                      intent.putExtra("Name", mName.getText().toString());
+                      intent.putExtra("Address", mAddress.getText().toString());
+                      intent.putExtra("Phone", mPhone.getText().toString());
 
-                    mContext.startActivity(intent);
+                      mContext.startActivity(intent);
+                  }else {
+                      mContext.startActivity(new Intent(mContext, Login.class));
+                  }
                 }
             });
         }
@@ -101,5 +114,9 @@ public class RecyclerViewConfig
         {
             return mCustomerList.size();
         }
+    }
+
+    public static void logout(){
+        user = null;
     }
 }

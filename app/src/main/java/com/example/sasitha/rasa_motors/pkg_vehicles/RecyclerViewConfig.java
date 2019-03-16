@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sasitha.rasa_motors.Login;
 import com.example.sasitha.rasa_motors.R;
+import com.example.sasitha.rasa_motors.customers.viewCustomer;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -19,12 +23,20 @@ public class RecyclerViewConfig {
     private Context vContext;
     private VehiclesAdapter vehiclesAdapter;
 
+    FirebaseAuth auth;
+    private static FirebaseUser user;
+
     public void setConfig(RecyclerView recyclerView, Context context, List<Vehicle> vehicles, List<String> keys){
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
         vContext = context;
         vehiclesAdapter = new VehiclesAdapter(vehicles, keys);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(vehiclesAdapter);
+
+
 
     }
 
@@ -50,14 +62,18 @@ public class RecyclerViewConfig {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(vContext, VehicleDetails.class);
-                    intent.putExtra("key" , key);
-                    intent.putExtra("model", vehModel.getText().toString());
-                    intent.putExtra("type" , vehType.getText().toString());
-                    intent.putExtra("number", vehNumber.getText().toString());
-                    intent.putExtra("color", vehColor.getText().toString());
+                    if(user != null){
+                        Intent intent = new Intent(vContext, VehicleDetails.class);
+                        intent.putExtra("key" , key);
+                        intent.putExtra("model", vehModel.getText().toString());
+                        intent.putExtra("type" , vehType.getText().toString());
+                        intent.putExtra("number", vehNumber.getText().toString());
+                        intent.putExtra("color", vehColor.getText().toString());
 
-                    vContext.startActivity(intent);
+                        vContext.startActivity(intent);
+                    }else {
+                         vContext.startActivity(new Intent(vContext, Login.class));
+                    }
                 }
             });
         }
@@ -101,4 +117,11 @@ public class RecyclerViewConfig {
             return vehicleList.size();
         }
     }
+
+    public static void logout(){
+        user = null;
+
+    }
+
+
 }

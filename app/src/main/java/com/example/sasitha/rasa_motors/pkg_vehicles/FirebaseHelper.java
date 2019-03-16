@@ -3,6 +3,8 @@ package com.example.sasitha.rasa_motors.pkg_vehicles;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +20,9 @@ public class FirebaseHelper {
     private DatabaseReference dbRef;
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
 
+    FirebaseAuth auth;
+    private static FirebaseUser user;
+
     public interface DataStatus{
 
         void DataIsLoaded(List<Vehicle> vehicles, List<String> keys);
@@ -27,6 +32,8 @@ public class FirebaseHelper {
     }
 
     public FirebaseHelper() {
+        this.auth = FirebaseAuth.getInstance();
+        this.user = auth.getCurrentUser();
         this.db = FirebaseDatabase.getInstance();
         this.dbRef = db.getReference("vehicles");
 
@@ -34,8 +41,9 @@ public class FirebaseHelper {
 
     public void addVehicle(Vehicle  vehicle, final DataStatus dataStatus){
 
+        String userId = auth.getUid();
         String key = dbRef.push().getKey();
-        dbRef.child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
+        dbRef.child(userId).child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsInserted();
@@ -49,12 +57,21 @@ public class FirebaseHelper {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 vehicles.clear();
                 List<String> keys = new ArrayList<>();
-
+                String userId = auth.getUid();
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
-                    keys.add(keyNode.getKey());
 
-                    Vehicle vehicle = keyNode.getValue(Vehicle.class);
-                    vehicles.add(vehicle);
+                    if(keyNode.getKey().equals(userId)) {
+                        for (DataSnapshot vehNode : keyNode.getChildren()) {
+                            keys.add(vehNode.getKey());
+
+                            Vehicle vehicle = vehNode.getValue(Vehicle.class);
+                            vehicles.add(vehicle);
+                        }
+                    }
+//                    keys.add(keyNode.getKey());
+//
+//                    Vehicle vehicle = keyNode.getValue(Vehicle.class);
+//                    vehicles.add(vehicle);
                 }
                 dataStatus.DataIsLoaded(vehicles, keys);
             }

@@ -24,7 +24,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.sasitha.rasa_motors.pkg_vehicles.vehicles" />
         </activity>
-        <activity android:name=".pkg_vehicles.HomePage"></activity>
+        <activity android:name=".pkg_vehicles.HomePage"
+            android:parentActivityName=".Login"
+            ></activity>
         <activity
             android:name=".customers.Customers"
             android:parentActivityName=".customers.viewCustomer" />

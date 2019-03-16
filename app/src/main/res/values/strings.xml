@@ -43,4 +43,11 @@
     <string name="noAccount">Don\'t have an account?</string>
     <string name="btnAppointments">Appointments</string>
     <string name="btnQuotation">Quotations</string>
+    <string name="required">REQUIRED!</string>
+    <string name="signedIn">User Signed in</string>
+    <string name="signFail">Signed in Failed!</string>
+    <string name="regSuccess">User Registered Successfully!</string>
+    <string name="regFailed">Registration Failed!</string>
+    <string name="logout">LOGOUT</string>
+    <string name="btnViewProfile">View Profile</string>
 </resources>
