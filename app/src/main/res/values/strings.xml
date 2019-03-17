@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rasa Motors</string>
+    <string name="app_name">RASA Motors</string>
     <string name="vehiclePage">Your Vehicles</string>
     <string name="noVehicles">No Vecicles Added</string>
     <string name="addVehicle">Add Vehicle</string>
@@ -50,4 +50,12 @@
     <string name="regFailed">Registration Failed!</string>
     <string name="logout">LOGOUT</string>
     <string name="btnViewProfile">View Profile</string>
+    <string name="btnAppoint">Appointments</string>
+    <string name="addAppoint">Add Appointment</string>
+    <string name="topic">RASA MOTORS</string>
+    <string name="addNewAppoint">Add New Appointment</string>
+    <string name="appointDetails">Appointment Details</string>
+    <string name="userProfile">User Profile</string>
+    <string name="createAcc">Create a New Account</string>
+    <string name="yourDetails">Your Details</string>
 </resources>

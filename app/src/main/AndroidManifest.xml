@@ -38,7 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".customers.CustomerDetailsActivity"></activity>
+        <activity android:name=".customers.CustomerDetailsActivity"
+            android:parentActivityName=".customers.viewCustomer"></activity>
+        <activity android:name=".Appointments.Appointments"
+            android:parentActivityName=".pkg_vehicles.HomePage"/>
+        <activity android:name=".AddNewAppointment"
+            android:parentActivityName=".Appointments.Appointments"/>
+        <activity android:name=".AppointmentDetailsActivity"
+            android:parentActivityName=".Appointments.Appointments"></activity>
     </application>
 
 </manifest>

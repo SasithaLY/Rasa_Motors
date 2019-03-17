@@ -84,7 +84,8 @@ public class FirebaseHelper {
     }
 
     public void updateVehicle(String key, Vehicle vehicle, final DataStatus dataStatus){
-        dbRef.child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
+        String userId = auth.getUid();
+        dbRef.child(userId).child(key).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsUpdated();
@@ -94,7 +95,8 @@ public class FirebaseHelper {
     }
 
     public void deleteVehicle(String key, final DataStatus dataStatus){
-        dbRef.child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+        String userId = auth.getUid();
+        dbRef.child(userId).child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsDeleted();

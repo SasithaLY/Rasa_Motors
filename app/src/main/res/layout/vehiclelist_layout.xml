@@ -16,7 +16,9 @@
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textSize="20sp"
+        android:textColor="@color/blueText"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,9 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtViewModel" />
@@ -41,6 +44,7 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="TextView"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +59,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
+        android:textSize="16sp"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

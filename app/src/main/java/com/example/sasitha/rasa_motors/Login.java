@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sasitha.rasa_motors.customers.Customers;
+import com.example.sasitha.rasa_motors.customers.customer;
+import com.example.sasitha.rasa_motors.customers.firebaseDatabaseHelper;
 import com.example.sasitha.rasa_motors.customers.viewCustomer;
 import com.example.sasitha.rasa_motors.pkg_vehicles.HomePage;
 import com.example.sasitha.rasa_motors.pkg_vehicles.vehicles;
@@ -20,10 +23,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
+
 public class Login extends AppCompatActivity {
 
     private Button mSignUp;
     private Button mSignIn;
+    private TextView txtAccount;
 
     private EditText email, password;
     private ProgressBar progressBar;
@@ -45,6 +51,9 @@ public class Login extends AppCompatActivity {
 
         mSignUp = (Button) findViewById(R.id.btnSignUp);
         mSignIn = (Button) findViewById(R.id.btnSignIn) ;
+        txtAccount = (TextView) findViewById(R.id.txtViewNoAcc);
+
+        progressBar = (ProgressBar) findViewById(R.id.loading_progressBar);
 
         mSignUp.setOnClickListener(new View.OnClickListener()
         {
@@ -54,19 +63,20 @@ public class Login extends AppCompatActivity {
                 if(isEmpty()){
                     return;
                 }else {
-                    //inProgress(true);
-                    //openCustomer();
+                    inProgress(true);
                     auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
+                            inProgress(true);
+                            addUser();
                             Toast.makeText(Login.this, getString(R.string.regSuccess), Toast.LENGTH_LONG).show();
-                           // inProgress(false);
                             openCustomer();
+                            inProgress(false);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //inProgress(false);
+                            inProgress(false);
                             Toast.makeText(Login.this, getString(R.string.regFailed)+e.getMessage(), Toast.LENGTH_LONG).show();
 
                         }
@@ -87,19 +97,19 @@ public class Login extends AppCompatActivity {
                 if(isEmpty()){
                     return;
                 }else {
-                    //inProgress(true);
-                    //openHome();
+                    inProgress(true);
                     auth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
+                            inProgress(true);
                             Toast.makeText(Login.this, getString(R.string.signedIn), Toast.LENGTH_LONG).show();
                             openHome();
+                            inProgress(false);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //inProgress(false);
-
+                            inProgress(false);
                             Toast.makeText(Login.this, getString(R.string.signFail)+e.getMessage(), Toast.LENGTH_LONG).show();
 
                         }
@@ -116,11 +126,18 @@ public class Login extends AppCompatActivity {
         if(x){
             progressBar.setVisibility(View.VISIBLE);
             mSignIn.setEnabled(false);
+            mSignIn.setVisibility(View.GONE);
             mSignUp.setEnabled(false);
+            mSignUp.setVisibility(View.GONE);
+            txtAccount.setVisibility(View.GONE);
+
         }else{
             progressBar.setVisibility(View.GONE);
             mSignIn.setEnabled(true);
             mSignUp.setEnabled(true);
+            mSignUp.setVisibility(View.VISIBLE);
+            mSignIn.setVisibility(View.VISIBLE);
+            txtAccount.setVisibility(View.VISIBLE);
         }
     }
 
@@ -151,5 +168,38 @@ public class Login extends AppCompatActivity {
     public void openLogin(){
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+    }
+
+    public void addUser(){
+        customer cust = new customer();
+
+        cust.setName("");
+        cust.setAddress("");
+        cust.setPhone("");
+
+        new firebaseDatabaseHelper().addCustomer(cust, new firebaseDatabaseHelper.DataStatus()
+        {
+            @Override
+            public void DataIsLoaded(List<customer> customers, List<String> keys)
+            {
+
+            }
+
+            @Override
+            public void DataIsInserted()
+            {
+                //Toast.makeText(Login.this, "Signed Up", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
     }
 }

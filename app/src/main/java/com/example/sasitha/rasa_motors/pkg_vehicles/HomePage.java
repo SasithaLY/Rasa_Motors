@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.sasitha.rasa_motors.Appointments.Appointments;
 import com.example.sasitha.rasa_motors.Login;
 import com.example.sasitha.rasa_motors.R;
 import com.example.sasitha.rasa_motors.customers.viewCustomer;
@@ -16,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class HomePage extends AppCompatActivity {
 
-    private Button btnVehicle, btnCustomers;
+    private Button btnVehicle, btnCustomers, btnAppointments, btnQuotation;
 
     private FirebaseAuth auth;
 
@@ -29,6 +30,14 @@ public class HomePage extends AppCompatActivity {
 
         btnVehicle = (Button) findViewById(R.id.btnVehicles);
         btnCustomers = (Button) findViewById(R.id.btnCustomers);
+        btnAppointments = (Button) findViewById(R.id.btnAppointments);
+
+        btnAppointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAppointments();
+            }
+        });
 
         btnVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +107,11 @@ public class HomePage extends AppCompatActivity {
 
     public void openLogin(){
         Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
+    public void openAppointments(){
+        Intent intent = new Intent(this, Appointments.class);
         startActivity(intent);
     }
 }

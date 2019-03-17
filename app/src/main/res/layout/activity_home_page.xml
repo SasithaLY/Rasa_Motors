@@ -4,46 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pkg_vehicles.HomePage">
+    tools:context=".pkg_vehicles.HomePage"
+    >
 
     <Button
         android:id="@+id/btnVehicles"
-        android:layout_width="142dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/edit_round"
         android:text="@string/vehiclePage"
+        android:textColor="#ffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnCustomers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnCustomers"
-        android:layout_width="142dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/edit_round"
         android:text="@string/btnViewProfile"
+        android:textColor="#ffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAppointments"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAppointments"
-        android:layout_width="142dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/edit_round"
         android:text="@string/btnAppointments"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnQuotation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="142dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:id="@+id/btnQuotation"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/edit_round"
         android:text="@string/btnQuotation"
+        android:textColor="#ffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="322dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginBottom="453dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468"
+        app:srcCompat="@drawable/logo" />
+
 </android.support.constraint.ConstraintLayout>

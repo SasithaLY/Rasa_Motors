@@ -29,6 +29,7 @@ public class Customers extends AppCompatActivity
         mEditTextPhone = (EditText) findViewById(R.id.editTextPhone);
         mBtnReg = (Button) findViewById(R.id.btnReg);
 
+
         mBtnReg.setOnClickListener(new View.OnClickListener()
         {
             @Override
