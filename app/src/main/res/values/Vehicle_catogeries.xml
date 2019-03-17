@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vehicle_catorgeries">
+        <item>Toyota</item>
+        <item>BMW</item>
+        <item>Suzuki</item>
+        <item>Audi</item>
+        <item>LandRover</item>
+    </string-array>
+</resources>

@@ -63,7 +63,6 @@ public class FirebaseHelper {
                     if(keyNode.getKey().equals(userId)) {
                         for (DataSnapshot vehNode : keyNode.getChildren()) {
                             keys.add(vehNode.getKey());
-
                             Vehicle vehicle = vehNode.getValue(Vehicle.class);
                             vehicles.add(vehicle);
                         }

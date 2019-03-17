@@ -58,4 +58,8 @@
     <string name="userProfile">User Profile</string>
     <string name="createAcc">Create a New Account</string>
     <string name="yourDetails">Your Details</string>
+    <string name="addQuotation">Get New Quotation</string>
+    <string name="btnNewQuotation">New Quotation</string>
+    <string name="quotations">Quotations</string>
+    <string name="quoteDetailes">Quotation Details</string>
 </resources>

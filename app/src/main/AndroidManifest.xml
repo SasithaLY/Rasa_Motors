@@ -46,6 +46,14 @@
             android:parentActivityName=".Appointments.Appointments"/>
         <activity android:name=".AppointmentDetailsActivity"
             android:parentActivityName=".Appointments.Appointments"></activity>
+        <activity android:name=".Quotation.QuotationDetailsActivity"
+            android:parentActivityName=".Quotation.MainActivity"></activity>
+        <activity android:name=".Quotation.NewQuotationActivity"
+            android:parentActivityName=".Quotation.MainActivity"/>
+        <activity android:name=".Quotation.MainActivity"
+            android:parentActivityName=".pkg_vehicles.HomePage">
+
+        </activity>
     </application>
 
 </manifest>
